@@ -23,8 +23,14 @@ IMAGE_INSTALL:append = " \
     lxpanel \
     lxsession \
     lxterminal \
+    lxappearance \
+    iso-codes \
     openbox \
     xserver-xorg-extension-glx \
+    xf86-video-modesetting \
+    xserver-xorg-module-exa \
+    xserver-xorg-module-libwfb \
+    xserver-xorg-utils \
     kernel-modules \
     linux-firmware \
     librsvg-gtk \
@@ -34,6 +40,10 @@ IMAGE_INSTALL:append = " \
     libgl-mesa \
     mesa-vulkan-drivers \
     mesa-megadriver \
+    mesa-demos \
+    htop \
+    git cmake meson ninja \
+    vim gedit \
 "
 inherit rockchip-image
 
@@ -43,4 +53,3 @@ PACKAGECONFIG:pn-glmark2 = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland opengl', 'wayland-gles2', '', d)} \
     drm-gles2 \
 "
-
