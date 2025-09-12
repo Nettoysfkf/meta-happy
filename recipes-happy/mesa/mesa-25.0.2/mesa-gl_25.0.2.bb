@@ -4,7 +4,7 @@ SUMMARY += " (OpenGL only, no EGL/GLES)"
 
 PROVIDES = "virtual/libgl virtual/mesa"
 
-S = "${UNPACKDIR}/mesa-${PV}"
+S = "${WORKDIR}/mesa-${PV}"
 
 TARGET_CFLAGS = "-I${STAGING_INCDIR}/drm"
 
