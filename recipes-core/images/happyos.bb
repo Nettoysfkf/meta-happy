@@ -8,13 +8,67 @@ inherit core-image features_check
 
 REQUIRED_DISTRO_FEATURES = "x11"
 
+IMAGE_LINGUAS = "zh-cn en-us"
+
+happy-glibc-pkg = "glibc-dev glibc-extra-nss glibc-pcprofile glibc-utils ldconfig ldd ldso libnss-db libsotruss nscd sln tzcode localedef"
+
+happy-glibc-locale = ""
+
+happy-ros-core = "ros-core ros-environment ros2cli ros-workspace ogre python3-colcon-ros python3-rosdep python3-vcstool \
+                  python3-setuptools \
+"
+
+happy-ros-core-moveit = "moveit urdf urdf-parser-plugin \
+"
+
+happy-ros-core-nav = "navigation2 nav2-bringup gazebo11"
+
+happy-ros-pkg = "pluginlib ceres-solver-dev ceres-solver-staticdev packagegroup-ros-turtlebot3-core turtlesim \
+                 rosidl-default-generators rosidl-generator-c rosidl-generator-cpp rosidl-cmake \
+                 packagegroup-ros2-demos octomap-staticdev \
+"
+
+happy-ros-turtlebot3 = "turtlebot3-description turtlebot3-node turtlebot3-bringup turtlebot3-navigation2 \
+                        turtlebot3-cartographer turtlebot3-example turtlebot3-teleop \
+                        turtlebot3 turtlebot3-gazebo turtlebot3-simulations turtlebot3-manipulation-gazebo \
+                        turtlebot3-fake-node turtlebot3-autorace-camera \
+                        turtlebot3-autorace turtlebot3-autorace-mission turtlebot3-autorace-detect \
+                        turtlebot3-manipulation-moveit-config turtlebot3-manipulation-teleop \
+                        turtlebot3-manipulation turtlebot3-manipulation-navigation2 turtlebot3-manipulation-cartographer \
+                        turtlebot3-manipulation-bringup turtlebot3-manipulation-hardware \
+                        turtlebot3-manipulation-description turtlebot3-applications-msgs turtlebot3-msgs \
+                        v4l-utils v4l-utils-dev libv4l libv4l-dev \
+"
+
+happy-ros-ament = " \
+    ament-cmake-python ament-cmake-ros ament-package ament-lint ament-lint-auto ament-cmake ament-cmake-auto \
+    ament-cmake-core ament-cmake-export-definitions ament-cmake-export-dependencies ament-cmake-export-include-directories \
+    ament-cmake-export-interfaces ament-cmake-export-libraries ament-cmake-export-link-flags ament-cmake-export-targets \
+    ament-cmake-gen-version-h ament-cmake-gmock ament-cmake-gtest ament-cmake-include-directories ament-cmake-libraries \
+    ament-cmake-pytest ament-cmake-python ament-cmake-target-dependencies ament-cmake-test ament-cmake-vendor-package \
+    ament-cmake-version foonathan-memory-staticdev rclcpp rclcpp-lifecycle rclcpp-action rclcpp-components builtin-interfaces \
+    common-interfaces fastrtps-cmake-module rosidl-default-generators rosidl-generator-c rosidl-generator-cpp rosidl-cmake \
+    ament-lint-cmake ament-xmllint \
+"
+
+happy-flutter = "clang"
+
+happy-other = "packagegroup-fonts-truetype fontconfig liberation-fonts font-util xorg-minimal-fonts"
+
 IMAGE_INSTALL:append = " \
     packagegroup-core-full-cmdline \
     packagegroup-core-ssh-openssh \
     packagegroup-core-x11 \
-    glibc-binaries \
-    glibc-gconv \
-    localedef \
+    ${happy-glibc-pkg} \
+    ${happy-glibc-locale} \
+    ${happy-flutter} \
+    ${happy-ros-pkg} \
+    ${happy-ros-core} \
+    ${happy-ros-core-moveit} \
+    ${happy-ros-core-nav} \
+    ${happy-ros-turtlebot3} \
+    ${happy-ros-ament} \
+    ${ROS_SDK_TARGET_PACKAGES} \
     xkbcomp \
     lxdm \
     lxde-common \
@@ -44,6 +98,23 @@ IMAGE_INSTALL:append = " \
     htop \
     git cmake meson ninja \
     vim gedit \
+    ssr \
+    fceux minizip \
+    qtbase qtbase-mkspecs qtbase-plugins qtbase-dev qtbase-qmlplugins qtbase-tools  qt5-opengles2-test  x11vnc \
+    alsa-lib alsa-utils alsa-plugins pulseaudio \
+    fuse \
+    add-file \
+    sudo \
+    packagegroup-qt5-qtcreator-debug \
+    packagegroup-qt5-toolchain-target \
+    python3-pip \
+    python3-setuptools \
+    flatpak \
+    e2fsprogs e2fsprogs-resize2fs \
+    libmd \
+    ntp ntp-utils \
+    tzdata \
+    tree \
 "
 inherit rockchip-image
 
@@ -52,4 +123,12 @@ PACKAGECONFIG:pn-glmark2 = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11 opengl', 'x11-gles2', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland opengl', 'wayland-gles2', '', d)} \
     drm-gles2 \
+"
+
+inherit extrausers
+HAPPY_PASSWD = "\$6\$happyos\$ft97yATdO0MXNg2G7UI0NO2BFQqc1FchkeXQapQb5/Q6AnkuAqv8c0RSQVKAiOYgduU9hEzgXaOcfdNPu..U.0"
+EXTRA_USERS_PARAMS = "\
+    useradd -p '${HAPPY_PASSWD}' -G sudo happy; \
+    usermod -aG sudo happy; \
+    usermod -aG input happy; \
 "
