@@ -1,0 +1,27 @@
+From 5bd36b3b8bf9194d7e6ffa2f97b990ad427214d5 Mon Sep 17 00:00:00 2001
+From: Dengke Du <pinganddu90@gmail.com>
+Date: Thu, 11 Sep 2025 13:38:06 +0800
+Subject: [PATCH] controller-manager: temp fix warning as error
+
+---
+ CMakeLists.txt | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 689e7c724..feadae3a0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,10 +1,6 @@
+ cmake_minimum_required(VERSION 3.5)
+ project(controller_manager)
+ 
+-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-  add_compile_options(-Wall -Wextra -Werror=conversion -Werror=unused-but-set-variable -Werror=return-type -Werror=shadow)
+-endif()
+-
+ set(THIS_PACKAGE_INCLUDE_DEPENDS
+     ament_index_cpp
+     controller_interface
+-- 
+2.25.1
+

@@ -1,0 +1,25 @@
+From 7bfda9625261f74173909b2158d6b068b81b1d7c Mon Sep 17 00:00:00 2001
+From: Dengke Du <pinganddu90@gmail.com>
+Date: Thu, 11 Sep 2025 13:46:51 +0800
+Subject: [PATCH] slam-toolbox: ceres already build with suitesparse
+
+---
+ CMakeLists.txt | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b0e2bbe..ed2c328 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -79,7 +79,7 @@ find_package(CHOLMOD REQUIRED)
+ find_package(CSparse REQUIRED)
+ find_package(G2O REQUIRED)
+ find_package(LAPACK REQUIRED)
+-find_package(Ceres REQUIRED COMPONENTS SuiteSparse)
++find_package(Ceres REQUIRED)
+ 
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ add_definitions(-DQT_NO_KEYWORDS)
+-- 
+2.25.1
+

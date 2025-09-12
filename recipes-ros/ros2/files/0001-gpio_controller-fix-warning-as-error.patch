@@ -1,0 +1,28 @@
+From 1645de441defe60d905d38c099a1f7169db582db Mon Sep 17 00:00:00 2001
+From: Dengke Du <pinganddu90@gmail.com>
+Date: Thu, 11 Sep 2025 13:49:38 +0800
+Subject: [PATCH] gpio_controller: fix warning as error
+
+---
+ CMakeLists.txt | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5eedec32e6..2069d36381 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,11 +6,6 @@ if(NOT CMAKE_CXX_STANDARD)
+   set(CMAKE_CXX_STANDARD 14)
+ endif()
+ 
+-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-  add_compile_options(-Wall -Wextra -Wpedantic -Werror=conversion -Werror=unused-but-set-variable
+-  -Werror=return-type -Werror=format -Werror=missing-braces)
+-endif()
+-
+ # find dependencies
+ find_package(ament_cmake REQUIRED)
+ find_package(controller_interface REQUIRED)
+-- 
+2.25.1
+

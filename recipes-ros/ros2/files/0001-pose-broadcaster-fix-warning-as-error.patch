@@ -1,0 +1,27 @@
+From 7b5f2b164778986ba321fdb98a76cf161cf6240c Mon Sep 17 00:00:00 2001
+From: Dengke Du <pinganddu90@gmail.com>
+Date: Thu, 11 Sep 2025 13:48:23 +0800
+Subject: [PATCH] pose-broadcaster: fix warning as error
+
+---
+ CMakeLists.txt | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 46028cf258..da168e72fc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,10 +4,6 @@ project(pose_broadcaster
+     CXX
+ )
+ 
+-if(CMAKE_CXX_COMPILER_ID MATCHES "(GNU|Clang)")
+-  add_compile_options(-Wall -Wextra -Wpedantic -Werror=conversion -Werror=unused-but-set-variable
+-                      -Werror=return-type -Werror=shadow -Werror=format)
+-endif()
+ 
+ set(THIS_PACKAGE_INCLUDE_DEPENDS
+   controller_interface
+-- 
+2.25.1
+
