@@ -29,10 +29,9 @@ happy-ros-pkg = "pluginlib ceres-solver-dev ceres-solver-staticdev packagegroup-
 "
 
 happy-ros-turtlebot3 = "turtlebot3-description turtlebot3-node turtlebot3-bringup turtlebot3-navigation2 \
-                        turtlebot3-cartographer turtlebot3-example turtlebot3-teleop \
+                        turtlebot3-cartographer turtlebot3-teleop \
                         turtlebot3 turtlebot3-gazebo turtlebot3-simulations turtlebot3-manipulation-gazebo \
-                        turtlebot3-fake-node turtlebot3-autorace-camera \
-                        turtlebot3-autorace turtlebot3-autorace-mission turtlebot3-autorace-detect \
+                        turtlebot3-fake-node \
                         turtlebot3-manipulation-moveit-config turtlebot3-manipulation-teleop \
                         turtlebot3-manipulation turtlebot3-manipulation-navigation2 turtlebot3-manipulation-cartographer \
                         turtlebot3-manipulation-bringup turtlebot3-manipulation-hardware \
