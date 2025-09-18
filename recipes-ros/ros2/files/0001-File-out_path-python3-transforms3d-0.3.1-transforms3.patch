@@ -1,0 +1,36 @@
+From 8c8d59c52001f38440ea81c9a078037c97b92ef5 Mon Sep 17 00:00:00 2001
+From: dudengke <dengke.du@ucas.com.cn>
+Date: Mon, 18 Aug 2025 13:27:17 +0800
+Subject: [PATCH] |   File
+ "<out_path>/python3-transforms3d/0.3.1/transforms3d-0.3.1/versioneer.py",
+ line 338, in get_config_from_root |     parser =
+ configparser.SafeConfigParser() |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ | AttributeError: module 'configparser' has no attribute 'SafeConfigParser'.
+ Did you mean: 'RawConfigParser'? | ERROR: 'python3 setup.py bdist_wheel '
+ execution failed. | WARNING:
+ <out_path>/python3-transforms3d/0.3.1/temp/run.do_compile.3678351:180 exit 1
+ from 'exit 1'
+
+---
+ versioneer.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/versioneer.py b/versioneer.py
+index 03b9a96..c98beeb 100644
+--- a/versioneer.py
++++ b/versioneer.py
+@@ -335,9 +335,9 @@ def get_config_from_root(root):
+     # configparser.NoOptionError (if it lacks "VCS="). See the docstring at
+     # the top of versioneer.py for instructions on writing your setup.cfg .
+     setup_cfg = os.path.join(root, "setup.cfg")
+-    parser = configparser.SafeConfigParser()
++    parser = configparser.ConfigParser()
+     with open(setup_cfg, "r") as f:
+-        parser.readfp(f)
++        parser.read_file(f)
+     VCS = parser.get("versioneer", "VCS")  # mandatory
+ 
+     def get(parser, name):
+-- 
+2.25.1
+

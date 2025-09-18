@@ -1,3 +1,5 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI += "file://0001-tmp-fix-warning-as-error.patch"
+
+DEPENDS:append = " rosidl-adapter"

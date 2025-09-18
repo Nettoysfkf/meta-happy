@@ -8,5 +8,6 @@
 
 
 do_install:append:class-target() {
+    sed -i 's#lib#usr/lib#' ${D}/usr/lib/cmake/yaml/yamlConfig.cmake
     sed -i 's|set(_IMPORT_PREFIX "/usr")|set(_IMPORT_PREFIX "${CMAKE_SYSROOT}/usr")|' ${D}/usr/lib/cmake/yaml/yamlTargets.cmake
 }

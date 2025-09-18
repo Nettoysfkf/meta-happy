@@ -1,0 +1,27 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 213770e..51f1bbb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -107,7 +107,7 @@ target_link_libraries(${PROJECT_NAME} cartographer ${PCL_LIBRARIES})
+ 
+ # Executables
+ add_executable(cartographer_node src/node_main.cpp)
+-target_link_libraries(cartographer_node ${PROJECT_NAME})
++target_link_libraries(cartographer_node ${PROJECT_NAME} absl::log_internal_check_op absl::log_internal_message)
+ ament_target_dependencies(cartographer_node ${dependencies})
+ 
+ add_executable(cartographer_occupancy_grid_node src/occupancy_grid_node_main.cpp)
+@@ -115,11 +115,11 @@ target_link_libraries(cartographer_occupancy_grid_node ${PROJECT_NAME})
+ ament_target_dependencies(cartographer_occupancy_grid_node ${dependencies})
+ 
+ add_executable(cartographer_offline_node src/offline_node_main.cpp)
+-target_link_libraries(cartographer_offline_node ${PROJECT_NAME})
++target_link_libraries(cartographer_offline_node ${PROJECT_NAME} absl::log_internal_check_op absl::log_internal_message)
+ ament_target_dependencies(cartographer_offline_node ${dependencies})
+ 
+ add_executable(cartographer_assets_writer src/assets_writer_main.cpp)
+-target_link_libraries(cartographer_assets_writer ${PROJECT_NAME})
++target_link_libraries(cartographer_assets_writer ${PROJECT_NAME} absl::log_internal_check_op absl::log_internal_message)
+ ament_target_dependencies(cartographer_assets_writer ${dependencies})
+ 
+ add_executable(cartographer_pbstream_map_publisher src/pbstream_map_publisher_main.cpp)
