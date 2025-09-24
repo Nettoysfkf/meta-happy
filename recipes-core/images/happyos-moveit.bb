@@ -14,40 +14,53 @@ happy-glibc-pkg = "glibc-dev glibc-extra-nss glibc-pcprofile glibc-utils ldconfi
 
 happy-glibc-locale = ""
 
-happy-ros-core = "ros-core ros-environment ros2cli ros-workspace ogre python3-colcon-ros python3-rosdep python3-vcstool \
-                  python3-setuptools \
+happy-ros-core = "\
+    ros-core ros-environment ros2cli \
+    ros-workspace \
 "
 
-happy-ros-core-moveit = "moveit urdf urdf-parser-plugin visualization-msgs moveit-msgs \
-    rosidl-default-runtime ament-cmake ament-cmake-python rosidl-default-generators \
-    swri-roscpp geometry-msgs tf2-eigen urdfdom-headers urdfdom moveit-common visualization-msgs \
-    rviz2 eigen3-cmake-module libeigen fmt py-binding-tools moveit-core moveit-ros-planning moveit-ros-planning-interface moveit-task-constructor-msgs \
-    rviz-marker-tools rclcpp moveit-planners ament-cmake-ros ament-cmake-gmock ament-cmake-gtest ament-cmake-pytest python3-numpy moveit-configs-utils \
-    moveit-planners-chomp moveit-planners-ompl moveit-resources-fanuc-moveit-config python3-pybind11 pybind11-vendor pybind11-json-vendor \
-    moveit-task-constructor-core moveit-task-constructor-msgs rviz-marker-tools moveit-task-constructor-demo rviz-marker-tools \
-    actionlib-msgs moveit-ros-move-group pluginlib std-msgs rclcpp rclcpp-action rclcpp-lifecycle rclcpp-components rclcpp-cascade-lifecycle moveit-configs-utils \
-    launch-testing launch-testing-ament-cmake moveit-resources-panda-moveit-config \
-    generate-parameter-library generate-parameter-library-py \
+happy-ros-development = "\
+    python3-colcon-ros python3-rosdep python3-vcstool \
+    python3-setuptools python3-numpy \
+    python3-pybind11 pybind11-vendor pybind11-json-vendor \
 "
 
-happy-ros-core-nav = "navigation2 nav2-bringup gazebo11"
-
-happy-ros-pkg = "pluginlib ceres-solver-dev ceres-solver-staticdev packagegroup-ros-turtlebot3-core turtlesim \
-                 rosidl-default-generators rosidl-generator-c rosidl-generator-cpp rosidl-cmake \
-                 packagegroup-ros2-demos octomap-staticdev \
-                 python-cmake-module py-binding-tools \
-                 cppcheck ament-cmake-cppcheck ament-cppcheck \
-"
-
-happy-ros-turtlebot3 = "turtlebot3-description turtlebot3-node turtlebot3-bringup turtlebot3-navigation2 \
-                        turtlebot3-cartographer turtlebot3-teleop \
-                        turtlebot3 turtlebot3-gazebo turtlebot3-simulations turtlebot3-manipulation-gazebo \
-                        turtlebot3-fake-node \
-                        turtlebot3-manipulation-moveit-config turtlebot3-manipulation-teleop \
-                        turtlebot3-manipulation turtlebot3-manipulation-navigation2 turtlebot3-manipulation-cartographer \
-                        turtlebot3-manipulation-bringup turtlebot3-manipulation-hardware \
-                        turtlebot3-manipulation-description turtlebot3-applications-msgs turtlebot3-msgs \
-                        v4l-utils v4l-utils-dev libv4l libv4l-dev \
+happy-ros-core-moveit = "\
+    ament-cmake ament-cmake-python ament-cmake-ros \
+    ament-cmake-gmock ament-cmake-gtest ament-cmake-pytest \
+    actionlib-msgs \
+    eigen3-cmake-module \
+    libeigen launch-testing launch-testing-ament-cmake \
+    fmt \
+    py-binding-tools pluginlib \
+    moveit moveit-msgs moveit-common \
+    moveit-core moveit-ros-planning moveit-ros-planning-interface \
+    moveit-task-constructor-msgs moveit-planners moveit-configs-utils \
+    moveit-planners-chomp moveit-planners-ompl moveit-resources-fanuc-moveit-config \
+    moveit-task-constructor-core moveit-task-constructor-demo moveit-ros-move-group \
+    moveit-configs-utils moveit-resources-panda-moveit-config \
+    urdf urdf-parser-plugin urdfdom-headers urdfdom \
+    visualization-msgs \
+    rosidl-default-runtime rosidl-default-generators rviz2 \
+    rviz-marker-tools rclcpp rclcpp-action rclcpp-lifecycle rclcpp-components rclcpp-cascade-lifecycle \
+    swri-roscpp std-msgs \
+    geometry-msgs generate-parameter-library generate-parameter-library-py \
+    tf2-eigen \
+    graph-msgs \
+    rviz-visual-tools \
+    ament-flake8 python3-flake8 \
+    zlib zlib-staticdev \
+    octomap-staticdev \
+    ament-pep257 python3-pydocstyle \
+    moveit-ros-perception \
+    libxaw7 libxaw6 libxaw-dev \
+    moveit-task-constructor-visualization \
+    launch-param-builder \
+    moveit-visual-tools \
+    moveit-tutorial \
+    moveit-resources \
+    srdfdom \
+    controller-manager \
 "
 
 happy-ros-ament = " \
@@ -59,6 +72,7 @@ happy-ros-ament = " \
     ament-cmake-version foonathan-memory-staticdev rclcpp rclcpp-lifecycle rclcpp-action rclcpp-components builtin-interfaces \
     common-interfaces fastrtps-cmake-module rosidl-default-generators rosidl-generator-c rosidl-generator-cpp rosidl-cmake \
     ament-lint-cmake ament-xmllint \
+    cppcheck ament-cmake-cppcheck ament-cppcheck python-cmake-module rosidl-cmake rosidl-generator-c rosidl-generator-cpp rosidl-default-generators \
 "
 
 happy-flutter = "clang"
@@ -71,13 +85,10 @@ IMAGE_INSTALL:append = " \
     packagegroup-core-x11 \
     ${happy-glibc-pkg} \
     ${happy-glibc-locale} \
-    ${happy-flutter} \
-    ${happy-ros-pkg} \
     ${happy-ros-core} \
     ${happy-ros-core-moveit} \
-    ${happy-ros-core-nav} \
-    ${happy-ros-turtlebot3} \
     ${happy-ros-ament} \
+    ${happy-ros-development} \
     ${ROS_SDK_TARGET_PACKAGES} \
     xkbcomp \
     lxdm \

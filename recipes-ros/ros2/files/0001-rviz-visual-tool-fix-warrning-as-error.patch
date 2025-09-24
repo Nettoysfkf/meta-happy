@@ -1,0 +1,30 @@
+From 15222cc6fe80ceaef8b4fd14bf40636eeea0875c Mon Sep 17 00:00:00 2001
+From: dudengke <pinganddu90@gmail.com>
+Date: Tue, 23 Sep 2025 13:10:33 +0800
+Subject: [PATCH] rviz-visual-tool: fix warrning as error
+
+---
+ CMakeLists.txt | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8b45187..9e12b4c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,13 +6,6 @@ if(NOT CMAKE_CXX_STANDARD)
+   set(CMAKE_CXX_STANDARD 14)
+ endif()
+ 
+-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+-  add_compile_options(-W -Wall -Wextra
+-    -Wwrite-strings -Wunreachable-code -Wpointer-arith
+-    -Winit-self -Wredundant-decls
+-    -Wno-unused-parameter -Wno-unused-function)
+-endif()
+-
+ find_package(ament_cmake REQUIRED)
+ find_package(rclcpp REQUIRED)
+ find_package(rclcpp_components REQUIRED)
+-- 
+2.47.3
+
